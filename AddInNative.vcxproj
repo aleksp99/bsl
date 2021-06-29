@@ -280,6 +280,7 @@
     <ClInclude Include="$(SolutionDir)src\Component.h" />
     <ClCompile Include="$(SolutionDir)src\SampleAddIn.cpp" />
     <ClInclude Include="$(SolutionDir)src\SampleAddIn.h" />
+    <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
