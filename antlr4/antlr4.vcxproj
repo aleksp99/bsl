@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6ACE0B69-FC47-3188-BAD8-D11FCA647F03}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>antlr4</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)$(MSBuildProjectDefaultTargets)\$(MSBuildProjectName)\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)temp\$(MSBuildProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectName)</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)$(MSBuildProjectDefaultTargets)\$(MSBuildProjectName)\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)temp\$(MSBuildProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectName)</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(SolutionDir)$(MSBuildProjectDefaultTargets)\$(MSBuildProjectName)\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(SolutionDir)temp\$(MSBuildProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(ProjectName)</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(SolutionDir)$(MSBuildProjectDefaultTargets)\$(MSBuildProjectName)\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(SolutionDir)temp\$(MSBuildProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(ProjectName)</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)antlr4\src;$(SolutionDir)antlr4\src\atn;$(SolutionDir)antlr4\src\dfa;$(SolutionDir)antlr4\src\misc;$(SolutionDir)antlr4\src\support;$(SolutionDir)antlr4\src\tree;$(SolutionDir)antlr4\src\tree\pattern;$(SolutionDir)antlr4\src\tree\xpath;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;ANTLR4CPP_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;ANTLR4CPP_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)antlr4\src;$(SolutionDir)antlr4\src\atn;$(SolutionDir)antlr4\src\dfa;$(SolutionDir)antlr4\src\misc;$(SolutionDir)antlr4\src\support;$(SolutionDir)antlr4\src\tree;$(SolutionDir)antlr4\src\tree\pattern;$(SolutionDir)antlr4\src\tree\xpath;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>$(SolutionDir)antlr4\src;$(SolutionDir)antlr4\src\atn;$(SolutionDir)antlr4\src\dfa;$(SolutionDir)antlr4\src\misc;$(SolutionDir)antlr4\src\support;$(SolutionDir)antlr4\src\tree;$(SolutionDir)antlr4\src\tree\pattern;$(SolutionDir)antlr4\src\tree\xpath;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)antlr4\src;$(SolutionDir)antlr4\src\atn;$(SolutionDir)antlr4\src\dfa;$(SolutionDir)antlr4\src\misc;$(SolutionDir)antlr4\src\support;$(SolutionDir)antlr4\src\tree;$(SolutionDir)antlr4\src\tree\pattern;$(SolutionDir)antlr4\src\tree\xpath;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;ANTLR4CPP_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;ANTLR4CPP_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)antlr4\src;$(SolutionDir)antlr4\src\atn;$(SolutionDir)antlr4\src\dfa;$(SolutionDir)antlr4\src\misc;$(SolutionDir)antlr4\src\support;$(SolutionDir)antlr4\src\tree;$(SolutionDir)antlr4\src\tree\pattern;$(SolutionDir)antlr4\src\tree\xpath;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>$(SolutionDir)antlr4\src;$(SolutionDir)antlr4\src\atn;$(SolutionDir)antlr4\src\dfa;$(SolutionDir)antlr4\src\misc;$(SolutionDir)antlr4\src\support;$(SolutionDir)antlr4\src\tree;$(SolutionDir)antlr4\src\tree\pattern;$(SolutionDir)antlr4\src\tree\xpath;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)antlr4\src;$(SolutionDir)antlr4\src\atn;$(SolutionDir)antlr4\src\dfa;$(SolutionDir)antlr4\src\misc;$(SolutionDir)antlr4\src\support;$(SolutionDir)antlr4\src\tree;$(SolutionDir)antlr4\src\tree\pattern;$(SolutionDir)antlr4\src\tree\xpath;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;ANTLR4CPP_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;ANTLR4CPP_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)antlr4\src;$(SolutionDir)antlr4\src\atn;$(SolutionDir)antlr4\src\dfa;$(SolutionDir)antlr4\src\misc;$(SolutionDir)antlr4\src\support;$(SolutionDir)antlr4\src\tree;$(SolutionDir)antlr4\src\tree\pattern;$(SolutionDir)antlr4\src\tree\xpath;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>$(SolutionDir)antlr4\src;$(SolutionDir)antlr4\src\atn;$(SolutionDir)antlr4\src\dfa;$(SolutionDir)antlr4\src\misc;$(SolutionDir)antlr4\src\support;$(SolutionDir)antlr4\src\tree;$(SolutionDir)antlr4\src\tree\pattern;$(SolutionDir)antlr4\src\tree\xpath;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)antlr4\src;$(SolutionDir)antlr4\src\atn;$(SolutionDir)antlr4\src\dfa;$(SolutionDir)antlr4\src\misc;$(SolutionDir)antlr4\src\support;$(SolutionDir)antlr4\src\tree;$(SolutionDir)antlr4\src\tree\pattern;$(SolutionDir)antlr4\src\tree\xpath;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;ANTLR4CPP_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;ANTLR4CPP_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)antlr4\src;$(SolutionDir)antlr4\src\atn;$(SolutionDir)antlr4\src\dfa;$(SolutionDir)antlr4\src\misc;$(SolutionDir)antlr4\src\support;$(SolutionDir)antlr4\src\tree;$(SolutionDir)antlr4\src\tree\pattern;$(SolutionDir)antlr4\src\tree\xpath;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>$(SolutionDir)antlr4\src;$(SolutionDir)antlr4\src\atn;$(SolutionDir)antlr4\src\dfa;$(SolutionDir)antlr4\src\misc;$(SolutionDir)antlr4\src\support;$(SolutionDir)antlr4\src\tree;$(SolutionDir)antlr4\src\tree\pattern;$(SolutionDir)antlr4\src\tree\xpath;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="$(SolutionDir)antlr4\src\ANTLRErrorListener.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\ANTLRErrorStrategy.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\ANTLRFileStream.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\ANTLRInputStream.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\BailErrorStrategy.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\BaseErrorListener.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\BufferedTokenStream.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\CharStream.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\CommonToken.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\CommonTokenFactory.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\CommonTokenStream.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\ConsoleErrorListener.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\DefaultErrorStrategy.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\DiagnosticErrorListener.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\Exceptions.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\FailedPredicateException.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\InputMismatchException.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\IntStream.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\InterpreterRuleContext.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\Lexer.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\LexerInterpreter.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\LexerNoViableAltException.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\ListTokenSource.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\NoViableAltException.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\Parser.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\ParserInterpreter.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\ParserRuleContext.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\ProxyErrorListener.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\RecognitionException.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\Recognizer.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\RuleContext.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\RuleContextWithAltNum.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\RuntimeMetaData.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\Token.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\TokenSource.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\TokenStream.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\TokenStreamRewriter.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\UnbufferedCharStream.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\UnbufferedTokenStream.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\Vocabulary.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\WritableToken.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\ATN.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\ATNConfig.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\ATNConfigSet.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\ATNDeserializationOptions.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\ATNDeserializer.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\ATNSerializer.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\ATNSimulator.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\ATNState.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\AbstractPredicateTransition.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\ActionTransition.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\AmbiguityInfo.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\ArrayPredictionContext.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\AtomTransition.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\BasicBlockStartState.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\BasicState.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\BlockEndState.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\BlockStartState.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\ContextSensitivityInfo.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\DecisionEventInfo.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\DecisionInfo.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\DecisionState.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\EmptyPredictionContext.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\EpsilonTransition.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\ErrorInfo.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\LL1Analyzer.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\LexerATNConfig.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\LexerATNSimulator.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\LexerAction.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\LexerActionExecutor.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\LexerChannelAction.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\LexerCustomAction.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\LexerIndexedCustomAction.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\LexerModeAction.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\LexerMoreAction.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\LexerPopModeAction.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\LexerPushModeAction.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\LexerSkipAction.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\LexerTypeAction.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\LookaheadEventInfo.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\LoopEndState.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\NotSetTransition.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\OrderedATNConfigSet.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\ParseInfo.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\ParserATNSimulator.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\PlusBlockStartState.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\PlusLoopbackState.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\PrecedencePredicateTransition.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\PredicateEvalInfo.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\PredicateTransition.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\PredictionContext.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\PredictionMode.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\ProfilingATNSimulator.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\RangeTransition.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\RuleStartState.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\RuleStopState.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\RuleTransition.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\SemanticContext.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\SetTransition.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\SingletonPredictionContext.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\StarBlockStartState.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\StarLoopEntryState.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\StarLoopbackState.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\TokensStartState.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\Transition.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\atn\WildcardTransition.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\dfa\DFA.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\dfa\DFASerializer.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\dfa\DFAState.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\dfa\LexerDFASerializer.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\misc\InterpreterDataReader.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\misc\Interval.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\misc\IntervalSet.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\misc\MurmurHash.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\misc\Predicate.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\support\Any.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\support\Arrays.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\support\CPPUtils.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\support\StringUtils.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\support\guid.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\ErrorNode.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\ErrorNodeImpl.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\IterativeParseTreeWalker.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\ParseTree.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\ParseTreeListener.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\ParseTreeVisitor.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\ParseTreeWalker.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\TerminalNode.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\TerminalNodeImpl.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\Trees.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\pattern\Chunk.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\pattern\ParseTreeMatch.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\pattern\ParseTreePattern.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\pattern\ParseTreePatternMatcher.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\pattern\RuleTagToken.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\pattern\TagChunk.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\pattern\TextChunk.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\pattern\TokenTagToken.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\xpath\XPath.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\xpath\XPathElement.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\xpath\XPathLexer.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\xpath\XPathLexerErrorListener.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\xpath\XPathRuleAnywhereElement.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\xpath\XPathRuleElement.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\xpath\XPathTokenAnywhereElement.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\xpath\XPathTokenElement.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\xpath\XPathWildcardAnywhereElement.cpp" />
+    <ClCompile Include="$(SolutionDir)antlr4\src\tree\xpath\XPathWildcardElement.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
