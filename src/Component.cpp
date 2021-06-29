@@ -324,7 +324,8 @@ variant_t Component::toStlVariant(tVariant src) {
         case VTYPE_R8: //double
             return src.dblVal;
         case VTYPE_PWSTR: { //std::string
-            return toUTF8String(std::basic_string_view(src.pwstrVal, src.wstrLen));
+            //return toUTF8String(std::basic_string_view(src.pwstrVal, src.wstrLen));
+            return src.pwstrVal;
         }
         case VTYPE_BOOL:
             return src.bVal;

@@ -1,5 +1,5 @@
 
-// Generated from d:\cpp\AddInNative\gBSL\BSLLexer.g4 by ANTLR 4.8
+// Generated from d:\cpp\AddInNative\gBSL\src\BSLLexer.g4 by ANTLR 4.8
 
 #pragma once
 

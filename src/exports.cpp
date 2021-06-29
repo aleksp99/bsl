@@ -17,15 +17,10 @@
  *
  */
 
-#include "antlr4-runtime.h"
-
-#include "BSLLexer.h"
-#include "BSLParser.h"
+#include "BSL.h"
 
 #include <ComponentBase.h>
 #include <types.h>
-
-#include "SampleAddIn.h"
 
 #ifdef _WINDOWS
 #pragma warning (disable : 4311 4302)
@@ -33,15 +28,15 @@
 
 const WCHAR_T *GetClassNames() {
     // Might contain multiple class names seperated by |
-    static char16_t cls_names[] = u"Sample";
+    static char16_t cls_names[] = u"BSL";
     return reinterpret_cast<WCHAR_T *>(cls_names);
 }
 
 long GetClassObject(const WCHAR_T *clsName, IComponentBase **pInterface) {
     if (!*pInterface) {
         auto cls_name = std::u16string(reinterpret_cast<const char16_t *>(clsName));
-        if (cls_name == u"Sample") {
-            *pInterface = new SampleAddIn;
+        if (cls_name == u"BSL") {
+            *pInterface = new BSL;
         }
         return (long) *pInterface;
     }

@@ -46,6 +46,7 @@ typedef std::variant<
         int32_t,
         double,
         bool,
+        const wchar_t*,
         std::string,
         std::tm,
         std::vector<char>
