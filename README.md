@@ -8,5 +8,5 @@ https://github.com/lintest/AddinTemplate
 https://github.com/1c-syntax/bsl-parser
 
 
-##ANTLR4:  
+## ANTLR4:  
 java -jar antlr-4.9.2-complete.jar -Dlanguage=Cpp BSLLexer.g4
