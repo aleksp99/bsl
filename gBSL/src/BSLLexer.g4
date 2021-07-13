@@ -1,13 +1,14 @@
 lexer grammar BSLLexer;
 
 channels {
+    COMMENT,
     // для хранения удаленного блока
     PREPROC_DELETE_CHANNEL
 }
 
 // commons
 fragment DIGIT: [0-9];
-LINE_COMMENT: '//' ~[\r\n]* -> channel(HIDDEN);
+LINE_COMMENT: '//' ~[\r\n]* -> channel(COMMENT);
 WHITE_SPACE: [ \t\f\r\n]+ -> channel(HIDDEN);
 
 // separators

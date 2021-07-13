@@ -17,30 +17,39 @@ public:
     ~BSL();
 
 private:
+    
+    const wchar_t* analysisText;
+    
     std::string extensionName() override;
 
     antlr4::ANTLRInputStream* input = nullptr;
     BSLLexer* lexer = nullptr;
     antlr4::CommonTokenStream* tokens = nullptr;
-    BSLParser* parser = nullptr;
-    antlr4::tree::ParseTree* tree = nullptr;
 
+    antlr4::Token* token = nullptr;
+
+    // tree
+    BSLParser* parser = nullptr;
     antlr4::tree::ParseTree* node = nullptr;
     std::vector<int32_t> position;
-    std::vector<antlr4::tree::ParseTree*> items;
+    bool isEOF;
 
-    variant_t parse(variant_t& value); // error
-    
+    void resetLexer();
+
+    variant_t getRules();
+    variant_t getLexemes();
+    variant_t getChannels();
+
+    void Execute(variant_t type);
+
     variant_t next();
-    variant_t isLexeme();
-    variant_t getItems();
-
     variant_t getType();
     variant_t getText();
-
-    // symbol
     variant_t getLine();
     variant_t getCharPositionInLine();
+
+    variant_t isLexeme();
+    variant_t getItems();
 
 };
 

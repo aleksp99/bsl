@@ -1,6 +1,13 @@
 ﻿
 #include "BSL.h"
 
+#define ERROR_TYPE "Type not supported!";
+#define ERROR_SOURCE_UNDEFINED "Source undefined!";
+#define ERROR_TEXT_ANALYSIS "No analysis text!";
+#define ERROR_NOT_BEGIN "Analysis not started!";
+#define ERROR_IS_RULE "Not available for lexer!";
+#define ERROR_NOT_SELECT_TOKEN "No token selected!";
+
 class wANTLRInputStream : public antlr4::ANTLRInputStream
 {
 public:
@@ -30,25 +37,36 @@ private:
 BSL::BSL() {
 
     // Full featured property registration example
-    AddProperty(L"Version", L"ВерсияКомпоненты", [&]() {
-        auto s = std::string(Version);
-        return std::make_shared<variant_t>(std::move(s));
-    });
+    AddProperty(L"Version", L"ВерсияКомпоненты", [&]() {return std::make_shared<variant_t>(std::move(std::string(Version)));});
 
-    // Method registration.
-    // Lambdas as method handlers are not supported.
-    AddMethod(L"Parse", L"Разбор", this, &BSL::parse);
+	AddProperty(L"Text", L"Текст",
+		[&]() {return std::make_shared<variant_t>(std::move(std::string("analysisText"))); },
+		[&](variant_t value) {
+			if (!std::holds_alternative<const wchar_t*>(value))
+				throw ERROR_TYPE;
+			resetLexer();
+			analysisText = std::get<const wchar_t*>(value);
+			input = new wANTLRInputStream(analysisText);
+			lexer = new BSLLexer(input);});
 
+	// представление
+	AddMethod(L"Rules", L"Правила", this, &BSL::getRules);
+	AddMethod(L"Lexemes", L"Лексемы", this, &BSL::getLexemes);
+	AddMethod(L"Channels", L"Каналы", this, &BSL::getChannels);
+
+	// метод старт
+	AddMethod(L"Execute", L"Выполнить", this, &BSL::Execute, { {0, -1} });
+	
+	// Общие методы
 	AddMethod(L"Next", L"Следующий", this, &BSL::next);
-	AddMethod(L"GetItems", L"ПолучитьЭлементы", this, &BSL::getItems);
-	AddMethod(L"IsLexeme", L"ЭтоЛексема", this, &BSL::isLexeme);
-
 	AddMethod(L"Type", L"Тип", this, &BSL::getType);
 	AddMethod(L"Text", L"Текст", this, &BSL::getText);
-
 	AddMethod(L"LineNumber", L"НомерСтроки", this, &BSL::getLine);
 	AddMethod(L"SymbolNumber", L"НомерСимвола", this, &BSL::getCharPositionInLine);
 
+	// методы Дерево
+	AddMethod(L"IsLexeme", L"ЭтоЛексема", this, &BSL::isLexeme);
+	AddMethod(L"GetItems", L"ПолучитьЭлементы", this, &BSL::getItems);
 }
 
 BSL::~BSL() {
@@ -57,108 +75,156 @@ BSL::~BSL() {
 	if(tokens) tokens->~CommonTokenStream();
 	if(lexer) lexer->~BSLLexer();
 	if(input) input->~ANTLRInputStream();
-	//if(node) node->
 }
 
 std::string BSL::extensionName() {
 	return "BSL";
 }
 
-variant_t BSL::parse(variant_t& value) {
-	if (!std::holds_alternative<const wchar_t*>(value))
-		return false;
+void BSL::resetLexer() {
 
-	//input = new antlr4::ANTLRInputStream(std::get<const wchar_t*>(value));
-	input = new wANTLRInputStream(std::get<const wchar_t*>(value));
-	lexer = new BSLLexer(input);
-	tokens = new antlr4::CommonTokenStream(lexer);
-	parser = new BSLParser(tokens);
-	tree = parser->file();
-
-	position.clear();
-	items.push_back(tree);
-	position.push_back(-1);
+	isEOF = false;
 	node = nullptr;
+	token = nullptr;
+	position.clear();
+	if (parser) parser->~BSLParser();
+	parser = nullptr;
+	if (tokens) tokens->~CommonTokenStream();
+	tokens = nullptr;
+	if (lexer) lexer->reset();
+}
 
-	return true;
-};
+variant_t BSL::getRules() {
+	return "";
+}
+variant_t BSL::getLexemes() {
+	return "";
+}
+variant_t BSL::getChannels() {
+	return "";
+}
 
-variant_t BSL::next()
-{
-	if (!parser || position.empty()) {
-		return false;
+void BSL::Execute(variant_t type) {
+	resetLexer();
+
+	if (!lexer)
+		throw ERROR_TEXT_ANALYSIS;
+
+	if (std::get<int>(type) < 0) {
+		tokens = new antlr4::CommonTokenStream(lexer);
+		parser = new BSLParser(tokens);
+	} else {
+		tokens = new antlr4::CommonTokenStream(lexer, std::get<int>(type));
+	}
+}
+
+variant_t BSL::next() {
+
+	if (!tokens)
+		throw ERROR_NOT_BEGIN;
 	
-	} else if (position.back() == items.size()-1) {
-		position.pop_back();
-		switch (position.size()) {
-		case 0: {
-			node = nullptr;
+	if (parser) { // ParseTree
+		token = nullptr;
+		if (!node && !isEOF) { // инициализация
+			node = parser->file();
+			return true;
+		} else if (position.empty()) { // в корне дерево один элемент, по NEXT удалим его и закроем парсер
+			resetLexer();
 			return false;
-		}case 1: {
-			items.clear();
-			items.push_back(tree);
-			break;
-		}default: {
-			items = node->parent->parent->children;
-			break;
+		} else if (position.back() == node->children.size() - 1) { // достиг последнего элемента
+			position.pop_back();
+			node = node->parent;
+			isEOF = !node;
+			return false;
+		} else {
+			position.back()++;
+			if (node->children[position.back()]->children.empty())
+				token = ((antlr4::tree::TerminalNode*)node->children[position.back()])->getSymbol();
+			return true;
 		}
+	} else { // перебор токены по ключу
+		if (token)
+			tokens->consume();
+		if (tokens->LA(1) == antlr4::Token::EOF) {
+			resetLexer();
+			return false;
+		} else {
+			token = tokens->LT(1);
+			return true;
 		}
-		node = items[position.back()];
-		return false;
-	}
-	else {
-		position.back()++;
-		node = items[position.back()];
-		return true;
-	}
-}
-
-variant_t BSL::isLexeme() {
-	return node && node->children.empty();
-}
-
-variant_t BSL::getItems() {
-
-	if (std::get<bool>(BSL::isLexeme()))
-		return false;
-	else {
-		items = node->children;
-		node = nullptr;
-		position.push_back(-1);
-		return true;
 	}
 }
 
 variant_t BSL::getType() {
 
-	if (!node)
-		return -1;
-	else if (std::get<bool>(BSL::isLexeme()))
-		return (int32_t)((antlr4::tree::TerminalNode*)node)->getSymbol()->getType();
+	if (!tokens)
+		throw ERROR_NOT_BEGIN;
+
+	if (token)
+		return (int32_t)token->getType();
+	else if (node)
+		if (position.empty() || position.back() < 0)
+			return (int32_t)((antlr4::RuleContext*)node)->getRuleIndex();
+		else
+			return (int32_t)((antlr4::RuleContext*)node->children[position.back()])->getRuleIndex();
 	else
-		return (int32_t)((antlr4::RuleContext*)node)->getRuleIndex();
+		throw ERROR_SOURCE_UNDEFINED;
 }
 
 variant_t BSL::getText() {
 
-	if (!node)
-		return "";
+	if (!tokens)
+		throw ERROR_NOT_BEGIN;
 
-	return node->getText();
+	if (token)
+		return token->getText();
+	else if (node) {
+		if (position.empty() || position.back() < 0)
+			return node->getText();
+		else
+			return node->children[position.back()]->getText();
+	}	
+	else
+		throw ERROR_SOURCE_UNDEFINED;
 }
 
 variant_t BSL::getLine() {
 
-	if (!std::get<bool>(BSL::isLexeme()))
-		return -1;
+	if (!token)
+		throw ERROR_NOT_SELECT_TOKEN;
 
-	return (int32_t)((antlr4::tree::TerminalNode*)node)->getSymbol()->getLine();
+	return (int32_t)token->getLine();
 }
 
 variant_t BSL::getCharPositionInLine() {
 
-	if (!std::get<bool>(BSL::isLexeme()))
-		return -1;
+	if (!token)
+		throw ERROR_NOT_SELECT_TOKEN;
+	
+	return (int32_t)token->getCharPositionInLine();
+}
 
-	return (int32_t)((antlr4::tree::TerminalNode*)node)->getSymbol()->getCharPositionInLine();
+variant_t BSL::isLexeme() {
+	if (!node)
+		throw ERROR_NOT_BEGIN;
+	return (bool)token;
+}
+
+variant_t BSL::getItems() {
+
+	if (!node) {
+		throw ERROR_NOT_BEGIN;
+	}
+	else if (token) {
+		throw ERROR_IS_RULE;
+	}
+	else if (position.empty()) {
+		position.push_back(-1);
+		return true;
+	}
+	else {
+		node = node->children[position.back()];
+		position.push_back(-1);
+		return true;
+	}
 }

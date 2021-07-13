@@ -52,7 +52,7 @@ public:
   };
 
   enum {
-    PREPROC_DELETE_CHANNEL = 2
+    COMMENT = 2, PREPROC_DELETE_CHANNEL = 3
   };
 
   enum {
