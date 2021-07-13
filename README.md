@@ -12,7 +12,8 @@ https://github.com/1c-syntax/bsl-parser
 java -jar antlr-4.9.2-complete.jar -Dlanguage=Cpp BSLLexer.g4
 
 ## 1С:  
-`Строки = Дерево.ПолучитьЭлементы();
+```
+Строки = Дерево.ПолучитьЭлементы();
 УстановитьВнешнююКомпоненту("ОбщийМакет.Parser"); // только для клиента
 Если ПодключитьВнешнююКомпоненту("ОбщийМакет.Parser", "Parser") Тогда
 		
@@ -49,4 +50,5 @@ java -jar antlr-4.9.2-complete.jar -Dlanguage=Cpp BSLLexer.g4
 		
 	КонецЦикла;
 			
-КонецПроцедуры`
+КонецПроцедуры
+```
