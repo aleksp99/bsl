@@ -1,5 +1,5 @@
 
-// Generated from d:\cpp\AddInNative\gBSL\BSLParser.g4 by ANTLR 4.8
+// Generated from d:\cpp\AddInNative\gBSL\src\BSLParser.g4 by ANTLR 4.8
 
 
 #include "BSLParserListener.h"

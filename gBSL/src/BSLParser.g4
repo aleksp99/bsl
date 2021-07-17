@@ -216,7 +216,7 @@ numeric          : FLOAT | DECIMAL;
 paramList        : param (COMMA param)*;
 param            : VAL_KEYWORD? IDENTIFIER (ASSIGN defaultValue)?;
 defaultValue     : constValue;
-constValue       : (MINUS | PLUS)? numeric | string | TRUE | FALSE | UNDEFINED | NULL_VALUE | DATETIME;
+constValue       : (MINUS | PLUS)? numeric | string | TRUE | FALSE | UNDEFINED | IS_NULL | DATETIME;
 multilineString  : STRINGSTART (STRINGPART | BAR | preprocessor)* STRINGTAIL;
 string           : (STRING | multilineString)+;
 statement
