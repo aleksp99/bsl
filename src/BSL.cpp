@@ -138,8 +138,11 @@ variant_t BSL::next() {
 			return false;
 		} else {
 			position.back()++;
-			if (node->children[position.back()]->children.empty())
-				token = ((antlr4::tree::TerminalNode*)node->children[position.back()])->getSymbol();
+			if (node->children[position.back()]->children.empty()) {
+				auto terminalNode = dynamic_cast<antlr4::tree::TerminalNodeImpl*>(node->children[position.back()]);
+				if(terminalNode != NULL)
+					token = terminalNode->getSymbol();
+			}
 			return true;
 		}
 	} else { // перебор токены по ключу
