@@ -11,7 +11,7 @@
 
 class BSL final : public Component {
 public:
-    const char *Version = u8"1.0.0";
+    const char *Version = u8"1.0.1";
 
     BSL();
     ~BSL();
@@ -19,6 +19,8 @@ public:
 private:
     
     std::string extensionName() override;
+
+    const std::string ERROR_SYNTAX = "ERROR_SYNTAX";
 
     antlr4::ANTLRInputStream* input = nullptr;
     BSLLexer* lexer = nullptr;
@@ -34,7 +36,7 @@ private:
 
     void resetLexer();
 
-    void Execute(variant_t type);
+    variant_t Execute(variant_t type);
 
     variant_t next();
     variant_t getType();

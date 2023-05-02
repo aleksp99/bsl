@@ -1,7 +1,7 @@
 ﻿
 #include "BSL.h"
 
-#define ERROR_TYPE "Type not supported!";
+#define ERROR_TYPE "Type not supported!"
 #define ERROR_SOURCE_UNDEFINED "Source undefined!";
 #define ERROR_TEXT_ANALYSIS "No analysis text!";
 #define ERROR_NOT_BEGIN "Analysis not started!";
@@ -84,7 +84,7 @@ void BSL::resetLexer() {
 	if (lexer) lexer->reset();
 }
 
-void BSL::Execute(variant_t value) {
+variant_t BSL::Execute(variant_t value) {
 	if (!std::holds_alternative<const wchar_t*>(value))
 		throw ERROR_TYPE;
 	resetLexer();
@@ -92,6 +92,12 @@ void BSL::Execute(variant_t value) {
 	lexer = new BSLLexer(input);
 	tokens = new antlr4::CommonTokenStream(lexer);
 	parser = new BSLParser(tokens);
+	
+	parser->file();
+	int32_t numberOfSyntaxErrors = parser->getNumberOfSyntaxErrors();
+	parser->reset();
+	
+	return numberOfSyntaxErrors;
 }
 
 variant_t BSL::next() {
@@ -114,11 +120,8 @@ variant_t BSL::next() {
 	}
 	else {
 		position.back()++;
-		if (node->children[position.back()]->children.empty()) {
-		auto terminalNode = dynamic_cast<antlr4::tree::TerminalNodeImpl*>(node->children[position.back()]);
-			if (terminalNode != NULL)
-				token = terminalNode->getSymbol();
-		}
+		if (node->children[position.back()]->getTreeType() == antlr4::tree::ParseTreeType::TERMINAL)
+			token = dynamic_cast<antlr4::tree::TerminalNodeImpl*>(node->children[position.back()])->getSymbol();
 		return true;
 	}
 }
@@ -131,12 +134,12 @@ variant_t BSL::getType() {
 	if (token) {
 		std::string_view symbolicName = parser->getVocabulary().getSymbolicName(token->getType());
 		return std::string(symbolicName.begin(), symbolicName.end());
-	} else if (node)
-		if (position.empty() || position.back() < 0)
-			return parser->getRuleNames()[((antlr4::RuleContext*)node)->getRuleIndex()];
-		else
-			return parser->getRuleNames()[((antlr4::RuleContext*)node->children[position.back()])->getRuleIndex()];
-	else
+	} else if (node) {
+		if (position.empty() || position.back() < 0) {
+			return node->getTreeType() == antlr4::tree::ParseTreeType::RULE ? parser->getRuleNames()[((antlr4::RuleContext*)node)->getRuleIndex()] : ERROR_SYNTAX;
+		} else
+			return node->children[position.back()]->getTreeType() == antlr4::tree::ParseTreeType::RULE ? parser->getRuleNames()[((antlr4::RuleContext*)node->children[position.back()])->getRuleIndex()] : ERROR_SYNTAX;
+	} else
 		throw ERROR_SOURCE_UNDEFINED;
 }
 
